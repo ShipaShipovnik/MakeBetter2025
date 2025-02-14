@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Профиль\Админка</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="container">
+          <div class="logo"><img src="./media/logo.png" alt="logo" /></div>
+          <div class="header-center">
+            <button class="btn create-ticket-btn">Отправить заявение</button>
+          </div>
+          <div class="header-right">
+            <a href="/верстка/register.html">Вход\Регистрация</a>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="container profile-page">
+          <!-- Контент профиля -->
+          <section class="profile-header">
+            <div class="profile-info">
+              <p>Имя пользователя</p>
+              <p>example@example.ru</p>
+            </div>
+            <hr />
+          </section>
+
+          <!-- ЕСЛИ АДМИН -->
+          <section class="profile-admin-catg">
+            <h3 class="h3">Управление категориями:</h3>
+            <div class="form-window">
+              <form class="catg-form catg-add-form">
+                <input type="text" />
+                <button type="submit" class="btn catg-form__submit">
+                  Добавить категорию
+                </button>
+              </form>
+              <form class="catg-form catg-delete-form">
+                <select name="" id="">
+                  <option value="">Категория 1</option>
+                </select>
+                <button type="submit" class="btn catg-form__submit">
+                  Удалить категорию
+                </button>
+              </form>
+            </div>
+          </section>
+
+          <section class="tickets-sect">
+            <div class="ticket-table-header">
+              <p>Количество ваших заявок:</p>
+            </div>
+
+            <div class="tickets-list">
+              <div class="ticket-card new-ticket">
+                <div class="ticket-img">
+                  <img src="./media/ticket1.jpg" class="img" alt="фото" />
+                  <!-- <img
+                    src="./media/ticket1-solved.jpg"
+                    class="img-after"
+                    alt="после"
+                  /> -->
+                </div>
+                <div class="ticket-body">
+                  <h5 class="ticket-body_title">Заголовок заявки</h5>
+                  <p class="ticket__catg">Категория: Дорожные работы</p>
+                  <p class="ticket__descr">
+                    Описание заявки. Описание заявки. Описание заявки. Описание
+                    заявки. Описание заявки. Описание заявки. Описание заявки.
+                    Описание заявки. Описание заявки.
+                  </p>
+                  <p class="ticket__status">Статус: Новая</p>
+                </div>
+                <div class="ticket-control">
+                  <button class="btn ticket__delete-btn">Отклонить</button>
+                  <button class="btn ticket__solve-btn">Решить</button>
+                </div>
+              </div>
+
+              <!-- отклоненный -->
+              <div class="ticket-card declined-ticket">
+                <div class="ticket-img">
+                  <img src="./media/ticket1.jpg" class="img" alt="фото" />
+                  <!-- <img
+                    src="./media/ticket1-solved.jpg"
+                    class="img-after"
+                    alt="после"
+                  /> -->
+                </div>
+                <div class="ticket-body">
+                  <h5 class="ticket-body_title">Заголовок заявки</h5>
+                  <p class="ticket__catg">Категория: Дорожные работы</p>
+                  <p class="ticket__descr">
+                    Описание заявки. Описание заявки. Описание заявки. Описание
+                    заявки. Описание заявки. Описание заявки. Описание заявки.
+                    Описание заявки. Описание заявки.
+                  </p>
+                  <p class="ticket__status">Статус: Отклонена</p>
+                </div>
+                <div class="ticket-control">
+                  <button class="btn ticket__delete-btn">Удалить</button>
+                </div>
+              </div>
+
+              <!-- решенный -->
+              <div class="ticket-card solved-ticket">
+                <div class="ticket-img">
+                  <img
+                    src="./media/ticket1.jpg"
+                    class="img img-before"
+                    alt="фото"
+                  />
+                  <img
+                    src="./media/ticket1-solved.jpg"
+                    class="img-after"
+                    alt="после"
+                  />
+                </div>
+                <div class="ticket-body">
+                  <h5 class="ticket-body_title">Заголовок заявки</h5>
+                  <p class="ticket__catg">Категория: Дорожные работы</p>
+                  <p class="ticket__descr">
+                    Описание заявки. Описание заявки. Описание заявки. Описание
+                    заявки. Описание заявки. Описание заявки. Описание заявки.
+                    Описание заявки. Описание заявки.
+                  </p>
+                  <p class="ticket__status">Статус: Решена</p>
+                </div>
+                <div class="ticket-control">
+                  <button class="btn ticket__delete-btn">Удалить</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="footer">
+        <p>(с) Макет выполнен Shipa Shipovnik</p>
+      </div>
+    </div>
+  </body>
+</html>

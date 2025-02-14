@@ -1,0 +1,475 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+* {
+  font-family: "Manrope", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffeddf;
+}
+
+.wrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 60px auto 45px;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.btn,
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.h3 {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.muted-h {
+  text-align: left;
+  margin-bottom: 15px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+
+section {
+  margin-bottom: 15px;
+}
+
+.form-header {
+  text-transform: uppercase;
+  font-size: 14pt;
+  margin-bottom: 10px;
+}
+
+.form-btn {
+  background-color: #c5d86d;
+  color: #0d1321;
+  height: 30px;
+  margin-top: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.header {
+  background-color: #c5d86d;
+  border-radius: 0 0 50px 50px;
+}
+.header .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+  height: 100%;
+  gap: 0px 0px;
+}
+.header .container .header-center {
+  justify-self: center;
+  grid-area: 1/2/2/3;
+}
+.header .container .header-center .create-ticket-btn {
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.header .container .header-center .create-ticket-btn:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+.header .container .logo img {
+  max-height: 40px;
+  width: auto;
+}
+.header .container .header-right {
+  justify-self: end;
+  grid-area: 1/3/2/4;
+}
+.header .container .header-right a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.header .container .header-right a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Легкий фон при наведении */
+  color: #000; /* Изменение цвета текста */
+}
+
+.main {
+  background-color: white;
+  margin: 0 45px;
+  padding: 10px 0;
+}
+
+.footer {
+  background-color: #d9d9d9;
+  border-radius: 50px 50px 0 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.recent-problems {
+  margin-top: 15px;
+}
+.recent-problems h4 {
+  margin-bottom: 10px;
+}
+
+.solved-problems-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.solved-problems-list .problem-card {
+  width: 170px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+.solved-problems-list .problem-card .card-img {
+  width: 100%;
+  height: 170px;
+  background-color: grey;
+  overflow: hidden;
+  position: relative;
+}
+.solved-problems-list .problem-card .card-img img {
+  height: 100%;
+  position: absolute;
+  transition: opacity 0.5s ease-in-out;
+}
+.solved-problems-list .problem-card .card-img .img-after {
+  opacity: 1;
+  z-index: 1;
+}
+.solved-problems-list .problem-card .card-img .img-before {
+  opacity: 0;
+  z-index: 2;
+}
+.solved-problems-list .problem-card .card-img:hover .img-after {
+  opacity: 0;
+}
+.solved-problems-list .problem-card .card-img:hover .img-before {
+  opacity: 1;
+}
+.solved-problems-list .problem-card .card-body {
+  padding: 8px;
+}
+.solved-problems-list .problem-card .card-body .card-title {
+  font-size: 14px;
+}
+.solved-problems-list .problem-card .card-body .card-catg {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+}
+.solved-problems-list .problem-card .card-body .card-text {
+  font-size: 12px;
+}
+
+.auth-form-text {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+}
+.auth-form-text a {
+  color: white;
+  color: #c5d86d;
+}
+
+.reg-page .form-window {
+  background-color: #0d1321;
+  color: white;
+  padding: 26px 24px;
+  width: 300px;
+  margin: 30px auto;
+}
+.reg-page .form-window h1 {
+  font-size: 16pt;
+  text-transform: uppercase;
+  text-align: center;
+}
+.reg-page .form-window form {
+  display: flex;
+  flex-direction: column;
+}
+.reg-page .form-window .form-control {
+  border: none;
+  width: 100%;
+  min-height: 30px;
+  margin-top: 14px;
+  text-align: center;
+}
+.reg-page .form-window .agreement-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.reg-page .form-window .agreement-input label {
+  font-size: 8pt;
+}
+.reg-page .form-window .form-btn {
+  background-color: #c5d86d;
+  color: #0d1321;
+  height: 30px;
+  margin-top: 14px;
+}
+
+.profile-page .profile-info {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(0, 0, 0, 0.5);
+}
+.profile-page .tickets-sect {
+  margin-top: 30px;
+}
+.profile-page .ticket-table-header {
+  width: 100%;
+  background-color: #000;
+  color: white;
+  height: 35px;
+  border-radius: 10px;
+  line-height: 35px;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+.profile-page .profile-admin-catg .form-window {
+  margin: 0 auto;
+  width: 530px;
+}
+.profile-page .profile-admin-catg .form-window .catg-form {
+  margin-bottom: 15px;
+  height: 30px;
+  border: #333 1px solid;
+  display: flex;
+}
+.profile-page .profile-admin-catg .form-window .catg-form .catg-form__submit {
+  height: 100%;
+  width: 250px;
+}
+.profile-page .profile-admin-catg .form-window .catg-form input,
+.profile-page .profile-admin-catg .form-window .catg-form select {
+  height: 100%;
+  flex-grow: 1;
+  border: none;
+}
+.profile-page .profile-admin-catg .form-window .catg-add-form .catg-form__submit {
+  background-color: #c5d86d;
+}
+.profile-page .profile-admin-catg .form-window .catg-delete-form .catg-form__submit {
+  background-color: #d85151;
+}
+
+.ticket-card {
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+.ticket-card .ticket-img {
+  height: 100%;
+  width: 120px;
+  background-color: grey;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.ticket-card .ticket-img img {
+  height: 100%;
+  position: absolute;
+  transition: opacity 0.5s ease-in-out;
+}
+.ticket-card .ticket-body {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.ticket-card .ticket-body .ticket__title {
+  font-size: 14px;
+}
+.ticket-card .ticket-body .ticket__catg {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+}
+.ticket-card .ticket-body .ticket__descr {
+  font-size: 12px;
+}
+.ticket-card .ticket-body .ticket__status {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+}
+.ticket-card .ticket-control {
+  align-self: center;
+  padding-right: 20px;
+}
+.ticket-card .ticket-control .ticket__delete-btn {
+  background-color: #d85151;
+  padding: 10px;
+  width: 100%;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.ticket-card .ticket-control .ticket__solve-btn {
+  background-color: #c5d86d;
+  padding: 10px;
+  width: 100%;
+  font-weight: 600;
+  color: #000000;
+}
+
+.declined-ticket {
+  background-color: #d85151;
+  grid-template-columns: 120px 1fr;
+}
+.declined-ticket .ticket-control {
+  display: none;
+}
+
+.solved-ticket {
+  background-color: #c5d86d;
+  grid-template-columns: 120px 1fr;
+}
+.solved-ticket .ticket-img {
+  transition: opacity 0.5s ease-in-out;
+}
+.solved-ticket .ticket-img .img-after {
+  opacity: 1;
+  z-index: 0;
+}
+.solved-ticket .ticket-img .img-before {
+  opacity: 0;
+  z-index: 2;
+}
+.solved-ticket .ticket-img:hover .img-after {
+  opacity: 0;
+}
+.solved-ticket .ticket-img:hover .img-before {
+  opacity: 1;
+}
+.solved-ticket .ticket-control {
+  display: none;
+}
+
+.create-ticket-page {
+  padding: 20px;
+}
+.create-ticket-page .form-window {
+  text-align: left;
+  width: 660px;
+  background-color: #0d1321;
+  margin: 0 auto;
+}
+.create-ticket-page .form-window .create-ticket-form {
+  padding: 15px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+.create-ticket-page .form-window .form-control {
+  text-align: left;
+  padding: 5px;
+  margin-bottom: 15px;
+  height: 30px;
+}
+.create-ticket-page .form-window select,
+.create-ticket-page .form-window input,
+.create-ticket-page .form-window textarea {
+  border: none;
+}
+.create-ticket-page .form-window .descrpt {
+  min-height: 50px;
+}
+.create-ticket-page .form-window .file-input {
+  display: flex;
+  margin-top: 14px;
+  align-items: center;
+}
+.create-ticket-page .form-window .file-input label {
+  font-size: 8pt;
+}
+.create-ticket-page .form-window .form-btn {
+  background-color: #c5d86d;
+  color: #0d1321;
+  height: 30px;
+  margin-top: 14px;
+}
+
+.ticket-page .ticket-control {
+  display: none;
+}
+.ticket-page .action-ticket-form form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ticket-page .action-ticket-form .form-control {
+  text-align: left;
+  padding: 5px;
+  height: 30px;
+}
+.ticket-page .action-ticket-form select,
+.ticket-page .action-ticket-form input,
+.ticket-page .action-ticket-form textarea {
+  border: none;
+}
+.ticket-page .action-ticket-form .descrpt {
+  min-height: 50px;
+  margin-right: 10px;
+  max-height: 100px;
+  resize: vertical;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  flex-grow: 1;
+}
+.ticket-page .action-ticket-form .file-input {
+  display: flex;
+  align-items: center;
+}
+.ticket-page .action-ticket-form .file-input label {
+  font-size: 8pt;
+}
+.ticket-page .action-ticket-form .form-btn {
+  color: #0d1321;
+  height: 30px;
+  margin-top: 14px;
+  width: 120px;
+  float: right;
+}
+.ticket-page .action-ticket-form .ticket__delete-btn {
+  background-color: #d85151;
+  align-self: flex-end;
+}
+.ticket-page .action-ticket-form .ticket__solve-btn {
+  background-color: #c5d86d;
+  align-self: baseline;
+}/*# sourceMappingURL=styles.css.map */

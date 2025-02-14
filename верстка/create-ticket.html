@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Создать заявку</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="container">
+          <div class="logo"><img src="./media/logo.png" alt="logo" /></div>
+          <div class="header-center">
+            <button class="btn create-ticket-btn">Отправить заявение</button>
+          </div>
+          <div class="header-right">
+            <a href="/верстка/register.html">Вход\Регистрация</a>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="container create-ticket-page">
+          <div class="form-window">
+            <form action="" class="create-ticket-form">
+              <h1 class="form-header">Создать заявление</h1>
+              <input
+                type="text"
+                placeholder="Заголовок"
+                class="form-control title"
+              />
+              <textarea
+                placeholder="Кратко опишите проблему"
+                class="form-control descrpt"
+              ></textarea>
+              <select>
+                <option value="">Категория не выбрана</option>
+                <option value="">Категория 1</option>
+              </select>
+
+              <span class="file-input"
+                ><input
+                  type="file"
+                  placeholder="Загрузите фото"
+                  class=""
+                />
+                <label>Макс. размер - 10мб.</label>
+              </span>
+
+              <button type="submit" class="form-btn">
+                Отправить заявление
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <p>(с) Макет выполнен Shipa Shipovnik</p>
+      </div>
+    </div>
+  </body>
+</html>

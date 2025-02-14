@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Создать заявку</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="container">
+          <div class="logo"><img src="./media/logo.png" alt="logo" /></div>
+          <div class="header-center">
+            <button class="btn create-ticket-btn">Отправить заявение</button>
+          </div>
+          <div class="header-right">
+            <a href="/верстка/register.html">Вход\Регистрация</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="container ticket-page">
+          <h5 class="muted-h">Заявка:</h5>
+
+          <div class="ticket-card new-ticket">
+            <div class="ticket-img">
+              <img src="./media/ticket1.jpg" class="img" alt="фото" />
+              <!-- <img
+                src="./media/ticket1-solved.jpg"
+                class="img-after"
+                alt="после"
+              /> -->
+            </div>
+            <div class="ticket-body">
+              <h5 class="ticket-body_title">Заголовок заявки</h5>
+              <p class="ticket__catg">Категория: Дорожные работы</p>
+              <p class="ticket__descr">
+                Описание заявки. Описание заявки. Описание заявки. Описание
+                заявки. Описание заявки. Описание заявки. Описание заявки.
+                Описание заявки. Описание заявки.
+              </p>
+              <p class="ticket__status">Статус: Новая</p>
+            </div>
+            <div class="ticket-control">
+              <button class="btn ticket__delete-btn">Отклонить</button>
+              <button class="btn ticket__solve-btn">Решить</button>
+            </div>
+          </div>
+          <section class="action-ticket-form">
+            <h5 class="muted-h">Отправить решение:</h5>
+            <form action="">
+              <span class="file-input"
+                ><input type="file" placeholder="Загрузите фото" class="" />
+                <label>Макс. размер - 10мб.</label>
+              </span>
+              <button class="btn form-btn ticket__solve-btn">Решить</button>
+            </form>
+          </section>
+
+          <section class="decline action-ticket-form">
+            <h5 class="muted-h">Отклонить заявку:</h5>
+            <form action="">
+              <textarea
+                placeholder="Причина отклонения, комментарий."
+                class="form-control descrpt"
+              ></textarea>
+              <button class="btn form-btn ticket__delete-btn">Отклонить</button>
+            </form>
+          </section>
+        </div>
+      </div>
+      <div class="footer">
+        <p>(с) Макет выполнен Shipa Shipovnik</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,555 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+$pale: #ffeddf;
+$salat: #c5d86d;
+$red: #d85151;
+$black-blue: #0d1321;
+
+* {
+  font-family: "Manrope", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffeddf;
+}
+
+.wrapper {
+  //   padding: 12px 0 0 0;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 60px auto 45px;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.btn,
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.h3 {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.muted-h {
+  text-align: left;
+  margin-bottom: 15px;
+  color: rgb(0, 0, 0, 50%);
+  font-size: 14px;
+}
+
+section {
+  margin-bottom: 15px;
+}
+
+.form-header {
+  text-transform: uppercase;
+  font-size: 14pt;
+  margin-bottom: 10px;
+}
+
+.form-btn {
+  background-color: $salat;
+  color: $black-blue;
+  height: 30px;
+  margin-top: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.header {
+  background-color: #c5d86d;
+  border-radius: 0 0 50px 50px;
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    align-items: center;
+    height: 100%;
+    gap: 0px 0px;
+    .header-center {
+      justify-self: center;
+      grid-area: 1 / 2 / 2 / 3;
+      .create-ticket-btn {
+        background-color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: 600;
+        color: #333;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .create-ticket-btn:hover {
+        background-color: #f0f0f0;
+        transform: translateY(-2px);
+      }
+    }
+    .logo img {
+      max-height: 40px;
+      width: auto;
+    }
+
+    .header-right {
+      justify-self: end;
+      grid-area: 1 / 3 / 2 / 4;
+    }
+
+    .header-right a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .header-right a:hover {
+      background-color: rgba(255, 255, 255, 0.2); /* Легкий фон при наведении */
+      color: #000; /* Изменение цвета текста */
+    }
+  }
+}
+.main {
+  background-color: white;
+  margin: 0 45px;
+  padding: 10px 0;
+}
+
+.footer {
+  background-color: #d9d9d9;
+  border-radius: 50px 50px 0 0;
+  text-align: center;
+  color: rgb(0, 0, 0, 50%);
+  padding-top: 10px;
+  font-size: 12px;
+}
+// ===================================================================
+
+.recent-problems {
+  margin-top: 15px;
+  h4 {
+    margin-bottom: 10px;
+  }
+}
+
+.solved-problems-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .problem-card {
+    width: 170px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+
+    .card-img {
+      width: 100%;
+      height: 170px;
+      background-color: grey;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        height: 100%;
+        position: absolute;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .img-after {
+        opacity: 1;
+        z-index: 1;
+      }
+      .img-before {
+        opacity: 0;
+        z-index: 2;
+      }
+    }
+
+    .card-img:hover {
+      .img-after {
+        opacity: 0;
+      }
+      .img-before {
+        opacity: 1;
+      }
+    }
+
+    .card-body {
+      padding: 8px;
+      .card-title {
+        font-size: 14px;
+      }
+      .card-catg {
+        color: rgb(0, 0, 0, 50%);
+        font-size: 12px;
+      }
+      .card-text {
+        font-size: 12px;
+      }
+    }
+  }
+}
+// ===================================================================
+// РЕГИСТРАЦИЯ И АВТОРИЗЦИЯ
+
+.auth-form-text {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+  a {
+    color: white;
+    // text-decoration: none;
+    color: #c5d86d;
+  }
+}
+
+.reg-page {
+  .form-window {
+    background-color: #0d1321;
+    color: white;
+    padding: 26px 24px;
+    width: 300px;
+    margin: 30px auto;
+    h1 {
+      font-size: 16pt;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-control {
+      border: none;
+      width: 100%;
+      min-height: 30px;
+      margin-top: 14px;
+      text-align: center;
+    }
+    .agreement-input {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+
+      label {
+        font-size: 8pt;
+      }
+    }
+    .form-btn {
+      background-color: #c5d86d;
+      color: #0d1321;
+      height: 30px;
+      margin-top: 14px;
+    }
+  }
+}
+
+// ===================================================================
+// Профиль
+
+.profile-page {
+  .profile-info {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(0, 0, 0, 50%);
+  }
+
+  .tickets-sect {
+    margin-top: 30px;
+  }
+
+  .ticket-table-header {
+    width: 100%;
+    background-color: #000;
+    color: white;
+    height: 35px;
+    border-radius: 10px;
+    line-height: 35px;
+    padding: 0 10px;
+    margin-bottom: 20px;
+  }
+
+  // АДМИНКА===================================================================
+  .profile-admin-catg {
+    .form-window {
+      margin: 0 auto;
+      width: 530px;
+
+      .catg-form {
+        margin-bottom: 15px;
+        height: 30px;
+        border: #333 1px solid;
+        display: flex;
+
+        .catg-form__submit {
+          height: 100%;
+          width: 250px;
+        }
+        input,
+        select {
+          height: 100%;
+          flex-grow: 1;
+          border: none;
+        }
+      }
+
+      .catg-add-form {
+        .catg-form__submit {
+          background-color: $salat;
+        }
+      }
+      .catg-delete-form {
+        .catg-form__submit {
+          background-color: $red;
+        }
+      }
+    }
+  }
+}
+
+// ГОРИЗОНТАЛЬНЫЙ ТИКЕТ
+.ticket-card {
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+
+  .ticket-img {
+    height: 100%;
+    width: 120px;
+    background-color: grey;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    object-fit: cover;
+
+    img {
+      height: 100%;
+      position: absolute;
+      transition: opacity 0.5s ease-in-out;
+    }
+  }
+
+  .ticket-body {
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    .ticket__title {
+      font-size: 14px;
+    }
+    .ticket__catg {
+      color: rgb(0, 0, 0, 50%);
+      font-size: 12px;
+    }
+    .ticket__descr {
+      font-size: 12px;
+    }
+    .ticket__status {
+      color: rgb(0, 0, 0, 50%);
+      font-size: 12px;
+    }
+  }
+  .ticket-control {
+    align-self: center;
+    padding-right: 20px;
+    .ticket__delete-btn {
+      background-color: $red;
+      padding: 10px;
+      width: 100%;
+      font-weight: 600;
+      color: #000000;
+      margin-bottom: 10px;
+    }
+    .ticket__solve-btn {
+      background-color: $salat;
+      padding: 10px;
+      width: 100%;
+      font-weight: 600;
+      color: #000000;
+    }
+  }
+}
+
+// отелоненный
+.declined-ticket {
+  background-color: #d85151;
+  grid-template-columns: 120px 1fr;
+  .ticket-control {
+    display: none;
+  }
+}
+
+// решенный
+.solved-ticket {
+  background-color: #c5d86d;
+
+  grid-template-columns: 120px 1fr;
+
+  // фото
+  .ticket-img {
+    transition: opacity 0.5s ease-in-out;
+
+    .img-after {
+      opacity: 1;
+      z-index: 0;
+    }
+
+    .img-before {
+      opacity: 0;
+      z-index: 2;
+    }
+  }
+  // после наведения
+
+  .ticket-img:hover {
+    .img-after {
+      opacity: 0;
+    }
+    .img-before {
+      opacity: 1;
+    }
+  }
+
+  .ticket-control {
+    display: none;
+  }
+}
+
+// ФОРМА ОТПРАВКИ ЗАЯВКИ
+.create-ticket-page {
+  padding: 20px;
+  .form-window {
+    text-align: left;
+    width: 660px;
+    background-color: $black-blue;
+    margin: 0 auto;
+
+    .create-ticket-form {
+      padding: 15px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-control {
+      text-align: left;
+      padding: 5px;
+      margin-bottom: 15px;
+      height: 30px;
+    }
+
+    select,
+    input,
+    textarea {
+      border: none;
+    }
+
+    .descrpt {
+      min-height: 50px;
+    }
+
+    .file-input {
+      display: flex;
+      margin-top: 14px;
+      align-items: center;
+      label {
+        font-size: 8pt;
+      }
+    }
+    .form-btn {
+      background-color: $salat;
+      color: $black-blue;
+      height: 30px;
+      margin-top: 14px;
+    }
+  }
+}
+
+//
+.ticket-page {
+  .ticket-control {
+    display: none;
+  }
+
+  .action-ticket-form {
+    form {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .form-control {
+      text-align: left;
+      padding: 5px;
+      height: 30px;
+    }
+
+    select,
+    input,
+    textarea {
+      border: none;
+    }
+
+    .descrpt {
+      min-height: 50px;
+      margin-right: 10px;
+      max-height: 100px;
+      resize: vertical;
+      border: 1px solid rgb(0, 0, 0, 50%);
+      flex-grow: 1;
+    }
+
+    .file-input {
+      display: flex;
+      align-items: center;
+
+      label {
+        font-size: 8pt;
+      }
+    }
+
+    .form-btn {
+      color: $black-blue;
+      height: 30px;
+      margin-top: 14px;
+      width: 120px;
+      float: right;
+    }
+    .ticket__delete-btn {
+      background-color: $red;
+      align-self: flex-end;
+    }
+    .ticket__solve-btn {
+      background-color: $salat;
+      align-self: baseline;
+
+    }
+  }
+ 
+}
