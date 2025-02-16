@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Создание заявки
+{% endblock %}
+
+{% block content %}
+<div class="container create-ticket-page">
+    <div class="form-window">
+        <form action="{% url 'create-ticket' %}" method="post" class="create-ticket-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1 class="form-header">Создать заявление</h1>
+
+            <!-- Поле заголовка -->
+            <div class="form-group">
+                {{ ticket_form.title }}
+                {% if ticket_form.title.errors %}
+                    <div class="text-danger">
+                        {% for error in ticket_form.title.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Поле описания -->
+            <div class="form-group">
+                {{ ticket_form.description }}
+                {% if ticket_form.description.errors %}
+                    <div class="text-danger">
+                        {% for error in ticket_form.description.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Поле категории -->
+            <div class="form-group">
+                {{ ticket_form.category }}
+                {% if ticket_form.category.errors %}
+                    <div class="text-danger">
+                        {% for error in ticket_form.category.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Поле загрузки фото -->
+            <div class="form-group file-input">
+                {{ attachment_form.photo }}
+                <label>Макс. размер - 10мб.</label>
+                {% if attachment_form.photo.errors %}
+                    <div class="text-danger">
+                        {% for error in attachment_form.photo.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="form-btn">Отправить заявление</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

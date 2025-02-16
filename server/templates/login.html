@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Вход
+{% endblock %}
+
+{% block content %}
+<div class="container reg-page">
+    <div class="form-window">
+        <form action="{% url 'login' %}" method="post" class="register-form">
+            {% csrf_token %}
+            <h1>Вход</h1>
+
+            <!--  ошибки формы -->
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    Неверный логин или пароль.
+                </div>
+            {% endif %}
+
+            <!-- Поле логина -->
+            <div class="form-group">
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="text-danger">
+                        {% for error in form.username.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Поле пароля -->
+            <div class="form-group">
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <div class="text-danger">
+                        {% for error in form.password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="form-btn">ВОЙТИ</button>
+
+            <span class="auth-form-text">
+                У меня нет аккаунта.
+                <a href="{% url 'register' %}">Зарегистрироваться.</a>
+            </span>
+        </form>
+    </div>
+</div>
+{% endblock %}

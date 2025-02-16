@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = "django-insecure-f-2fmen0uaf(h3in8)v&m@rd+ewpz483ex2^3q($##2oreb)tw
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -55,9 +53,9 @@ ROOT_URLCONF = "MakeBetter.urls"
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -71,21 +69,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "MakeBetter.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'makebetter_db',       # Имя базы данных
-        'USER': 'postgres',            # Имя пользователя
-        'PASSWORD': 'root',    # Пароль пользователя
-        'HOST': 'localhost',         # Хост (обычно localhost)
-        'PORT': '5432',              # Порт (по умолчанию 5432)
+        'NAME': 'makebetter_db',  # Имя базы данных
+        'USER': 'postgres',  # Имя пользователя
+        'PASSWORD': 'root',  # Пароль пользователя
+        'HOST': 'localhost',  # Хост (обычно localhost)
+        'PORT': '5432',  # Порт (по умолчанию 5432)
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -105,7 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -117,11 +112,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+STATIC_URL = '/static/'  # URL-префикс для статических файлов
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+# Папки, где Django будет искать статические файлы
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Глобальная папка static
+]
 
-STATIC_URL = "static/"
+# Папка для сбора статических файлов при deploy (collectstatic)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -129,6 +128,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = "media/"
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'users.User'
