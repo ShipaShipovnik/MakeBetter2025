@@ -27,6 +27,10 @@ body {
   margin: 0 auto;
 }
 
+section {
+  margin-bottom: 15px;
+}
+
 .btn,
 button {
   border: none;
@@ -38,6 +42,11 @@ button {
   margin-bottom: 15px;
 }
 
+.h4 {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
 .muted-h {
   text-align: left;
   margin-bottom: 15px;
@@ -45,8 +54,11 @@ button {
   font-size: 14px;
 }
 
-section {
+.muted-page-msg {
+  text-align: center;
   margin-bottom: 15px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
 }
 
 .form-header {
@@ -133,59 +145,55 @@ section {
 .recent-problems {
   margin-top: 15px;
 }
-.recent-problems h4 {
-  margin-bottom: 10px;
-}
-
-.solved-problems-list {
+.recent-problems .solved-problems-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.solved-problems-list .problem-card {
+.recent-problems .solved-problems-list .problem-card {
   width: 170px;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 15px;
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
-.solved-problems-list .problem-card .card-img {
+.recent-problems .solved-problems-list .problem-card .card-img {
   width: 100%;
   height: 170px;
   background-color: grey;
   overflow: hidden;
   position: relative;
 }
-.solved-problems-list .problem-card .card-img img {
+.recent-problems .solved-problems-list .problem-card .card-img img {
   height: 100%;
   position: absolute;
   transition: opacity 0.5s ease-in-out;
 }
-.solved-problems-list .problem-card .card-img .img-after {
+.recent-problems .solved-problems-list .problem-card .card-img .img-after {
   opacity: 1;
   z-index: 1;
 }
-.solved-problems-list .problem-card .card-img .img-before {
+.recent-problems .solved-problems-list .problem-card .card-img .img-before {
   opacity: 0;
   z-index: 2;
 }
-.solved-problems-list .problem-card .card-img:hover .img-after {
+.recent-problems .solved-problems-list .problem-card .card-img:hover .img-after {
   opacity: 0;
 }
-.solved-problems-list .problem-card .card-img:hover .img-before {
+.recent-problems .solved-problems-list .problem-card .card-img:hover .img-before {
   opacity: 1;
 }
-.solved-problems-list .problem-card .card-body {
+.recent-problems .solved-problems-list .problem-card .card-body {
   padding: 8px;
 }
-.solved-problems-list .problem-card .card-body .card-title {
+.recent-problems .solved-problems-list .problem-card .card-body .card-title {
   font-size: 14px;
 }
-.solved-problems-list .problem-card .card-body .card-catg {
+.recent-problems .solved-problems-list .problem-card .card-body .card-catg {
   color: rgba(0, 0, 0, 0.5);
   font-size: 12px;
 }
-.solved-problems-list .problem-card .card-body .card-text {
+.recent-problems .solved-problems-list .problem-card .card-body .card-text {
   font-size: 12px;
 }
 
@@ -199,42 +207,36 @@ section {
   color: #c5d86d;
 }
 
-.reg-page .form-window {
+.reg-page .auth-window {
   background-color: #0d1321;
   color: white;
   padding: 26px 24px;
   width: 300px;
   margin: 30px auto;
 }
-.reg-page .form-window h1 {
+.reg-page .auth-window h1 {
   font-size: 16pt;
   text-transform: uppercase;
   text-align: center;
 }
-.reg-page .form-window form {
+.reg-page .auth-window form {
   display: flex;
   flex-direction: column;
 }
-.reg-page .form-window .form-control {
+.reg-page .auth-window .form-control {
   border: none;
   width: 100%;
   min-height: 30px;
   margin-top: 14px;
   text-align: center;
 }
-.reg-page .form-window .agreement-input {
+.reg-page .auth-window .agreement-input {
   display: flex;
   gap: 10px;
   margin-top: 14px;
 }
-.reg-page .form-window .agreement-input label {
+.reg-page .auth-window .agreement-input label {
   font-size: 8pt;
-}
-.reg-page .form-window .form-btn {
-  background-color: #c5d86d;
-  color: #0d1321;
-  height: 30px;
-  margin-top: 14px;
 }
 
 .profile-page .profile-info {

@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from users.models import User
 from django.utils import timezone
@@ -48,6 +49,11 @@ class Ticket(models.Model):
         elif self.status == 'SOLVED' and not self.pk:
             self.solved_at = timezone.now()
 
+        # Проверка, что при статусе "ОТКЛОНЕНО" есть комментарий
+        if self.status == 'DECLINED' and self.pk:
+            if not self.comments.exists():  # Проверяем, есть ли комментарии
+                raise ValidationError("При отклонении заявки необходимо добавить комментарий.")
+
         super().save(*args, **kwargs)
 
 
@@ -59,7 +65,8 @@ class TicketAttachment(models.Model):
 
     ticket = models.ForeignKey(Ticket, related_name='attachments', on_delete=models.CASCADE)
     photo = models.ImageField(upload_to='tickets/attachments/', verbose_name='Фото')
-    type = models.CharField(max_length=6, choices=TYPE_CHOICES, verbose_name='Тип фото')
+    type = models.CharField(max_length=6, choices=TYPE_CHOICES, verbose_name='Тип фото', default='BEFORE')
+
 
     def __str__(self):
         return f"{self.get_type_display()} для заявки #{self.ticket.title}"
@@ -67,3 +74,17 @@ class TicketAttachment(models.Model):
     class Meta:
         verbose_name_plural = "Фото заявок"
         verbose_name = "Фото заявки"
+
+
+class TicketComment(models.Model):
+    ticket = models.ForeignKey('Ticket', on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ticket_comments')
+    comment = models.TextField(max_length=500, verbose_name='Комментарий')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Комментарий от {self.user.name} к тикету #{self.ticket.id}"
+
+    class Meta:
+        verbose_name = 'Комментарий к заявке'
+        verbose_name_plural = 'Комментарии к заявкам'

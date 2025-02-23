@@ -1,9 +1,4 @@
-{% extends 'base.html' %}
-
-{% block title %}
-Главная страница
-{% endblock %}
-
+{% extends 'base.html' %} {% block title %} Главная страница {% endblock %}
 {% block content %}
 <div class="container main-page">
     <!-- Контент главной страницы -->
@@ -12,24 +7,22 @@
     <p>Добро пожаловать, {{user.name}}</p>
 
     {% else %}
-    <p>Если вы желаете оставить заявку на решение проблемы - <a href="{% url 'register' %}"> зарегистрируйтесь или
-        войдите.</a></p>
+    <p>
+        Если вы желаете оставить заявку на решение проблемы -
+        <a href="{% url 'register' %}"> зарегистрируйтесь или войдите.</a>
+    </p>
 
     {% endif %}
 
     <section class="recent-problems">
-        <h4>Недавно решеные проблемы:</h4>
+        <h4 class="h4">Недавно решеные проблемы:</h4>
 
         <div class="solved-problems-list">
             <!-- карточка -->
             <div class="problem-card">
                 <div class="card-img">
                     <img src="./media/ticket1.jpg" class="img-before" alt="до"/>
-                    <img
-                            src="./media/ticket1-solved.jpg"
-                            class="img-after"
-                            alt="после"
-                    />
+                    <img src="./media/ticket1-solved.jpg" class="img-after" alt="после"/>
                 </div>
 
                 <div class="card-body">
@@ -44,11 +37,7 @@
             <div class="problem-card">
                 <div class="card-img">
                     <img src="./media/ticket1.jpg" class="img-before" alt="до"/>
-                    <img
-                            src="./media/ticket1-solved.jpg"
-                            class="img-after"
-                            alt="после"
-                    />
+                    <img src="./media/ticket1-solved.jpg" class="img-after" alt="после"/>
                 </div>
 
                 <div class="card-body">
@@ -63,11 +52,7 @@
             <div class="problem-card">
                 <div class="card-img">
                     <img src="./media/ticket1.jpg" class="img-before" alt="до"/>
-                    <img
-                            src="./media/ticket1-solved.jpg"
-                            class="img-after"
-                            alt="после"
-                    />
+                    <img src="./media/ticket1-solved.jpg" class="img-after" alt="после"/>
                 </div>
 
                 <div class="card-body">
@@ -82,11 +67,7 @@
             <div class="problem-card">
                 <div class="card-img">
                     <img src="./media/ticket1.jpg" class="img-before" alt="до"/>
-                    <img
-                            src="./media/ticket1-solved.jpg"
-                            class="img-after"
-                            alt="после"
-                    />
+                    <img src="./media/ticket1-solved.jpg" class="img-after" alt="после"/>
                 </div>
 
                 <div class="card-body">

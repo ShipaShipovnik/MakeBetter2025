@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from .forms import *
 from tickets.models import Category, Ticket
 
+from tickets.forms import CategoryForm
+
 
 def register_view(request):
     if request.method == 'POST':
@@ -50,9 +52,12 @@ def profile_view(request):
     tickets = Ticket.objects.filter(created_by=user)
     categories = Category.objects.all()
 
+    catg_form = CategoryForm(request.POST)
+
     context = {
         'user': user,
         'tickets': tickets,
         'categories': categories,
+        'catg_form': catg_form,
     }
     return render(request, 'profile.html', context)

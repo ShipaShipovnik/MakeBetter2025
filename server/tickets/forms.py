@@ -1,5 +1,5 @@
 from django import forms
-from .models import Ticket, TicketAttachment
+from .models import Ticket, TicketAttachment, Category
 
 
 class TicketForm(forms.ModelForm):
@@ -28,5 +28,21 @@ class TicketAttachmentForm(forms.ModelForm):
         widgets = {
             'photo': forms.ClearableFileInput(attrs={
                 'class': 'form-control',
+            }),
+        }
+
+class TicketCommentForm(forms.Form):
+    comment = forms.CharField(widget=forms.Textarea, label='Комментарий', required=True)
+
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'catg-form catg-add-form',
+                'placeholder': 'Название категории'
             }),
         }

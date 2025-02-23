@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Панель управления заявкой
+{% endblock %}
+
+{% block content %}
+<div class="container ticket-page">
+    <h5 class="muted-h">Заявка:</h5>
+
+    <div class="ticket-card new-ticket">
+        <div class="ticket-img">
+            {% for image in before_images %}
+            <img src="{{ image.photo.url }}" class="img" alt="Фото до"/>
+            {% endfor %}
+
+            {% for image in after_images %}
+            <img src="{{ image.photo.url }}" class="img-after" alt="Фото после"/>
+            {% endfor %}
+        </div>
+        <div class="ticket-body">
+            <h5 class="ticket-body_title">{{ ticket.title }}</h5>
+            <p class="ticket__catg">Категория: {{ ticket.category.name }}</p>
+            <p class="ticket__descr">{{ ticket.description }}</p>
+            <p class="ticket__status">Статус: {{ ticket.get_status_display }}</p>
+        </div>
+    </div>
+
+    {% if request.user.is_staff %}
+    <!-- Форма для решения заявки -->
+    <section class="action-ticket-form">
+        <h5 class="muted-h">Отправить решение:</h5>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ solve_form.as_p }}
+            <button type="submit" name="solve_ticket" class="btn form-btn ticket__solve-btn">Решить</button>
+        </form>
+    </section>
+
+    <!-- Форма для отклонения заявки -->
+    <section class="decline action-ticket-form">
+        <h5 class="muted-h">Отклонить заявку:</h5>
+        <form method="post">
+            {% csrf_token %}
+            {{ decline_form.as_p }}
+            <button type="submit" name="decline_ticket" class="btn form-btn ticket__delete-btn">Отклонить</button>
+        </form>
+    </section>
+    {% endif %}
+</div>
+
+{% endblock %}

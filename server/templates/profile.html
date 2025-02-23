@@ -21,14 +21,14 @@
         <h3 class="h3">Управление категориями:</h3>
         <div class="form-window">
             <!-- Форма добавления категории -->
-            <form action="{% url 'add_category' %}" method="post" class="catg-form catg-add-form">
+            <form action="{% url 'create-catg' %}" method="post" class="catg-form catg-add-form">
                 {% csrf_token %}
-                <input type="text" name="category_name" placeholder="Название категории"/>
+                {{ catg_form.name }}
                 <button type="submit" class="btn catg-form__submit">Добавить категорию</button>
             </form>
 
-            <!-- Форма удаления категории -->
-            <form action="{% url 'delete_category' %}" method="post" class="catg-form catg-delete-form">
+            <!--удаление-->
+            <form action="{% url 'delete-catg' %}" method="post" class="catg-form catg-delete-form">
                 {% csrf_token %}
                 <select name="category_id">
                     {% for category in categories %}
@@ -48,6 +48,7 @@
         </div>
 
         <div class="tickets-list">
+            {% if tickets %}
             {% for ticket in tickets %}
             <div class="ticket-card {% if ticket.status == 'NEW' %}new-ticket{% elif ticket.status == 'DECLINED' %}declined-ticket{% elif ticket.status == 'SOLVED' %}solved-ticket{% endif %}">
                 <div class="ticket-img">
@@ -68,21 +69,36 @@
                     {% endif %}
                 </div>
                 <div class="ticket-body">
-                    <h5 class="ticket-body_title">{{ ticket.title }}</h5>
+                    <!-- Ссылка на страницу деталей тикета -->
+                    <a href="{% url 'ticket_detail' ticket.id %}">
+                        <h5 class="ticket-body_title">{{ ticket.title }}</h5>
+                    </a>
                     <p class="ticket__catg">Категория: {{ ticket.category.name }}</p>
                     <p class="ticket__descr">{{ ticket.description }}</p>
                     <p class="ticket__status">Статус: {{ ticket.get_status_display }}</p>
                 </div>
                 <div class="ticket-control">
                     {% if ticket.status == 'NEW' %}
-                    <button class="btn ticket__delete-btn">Отклонить</button>
-                    <button class="btn ticket__solve-btn">Решить</button>
+                    <!-- Кнопка "Отклонить" с ссылкой на страницу деталей -->
+                    <a href="{% url 'ticket_detail' ticket.id %}">
+                        <button class="btn ticket__delete-btn">Отклонить</button>
+                    </a>
+                    <!-- Кнопка "Решить" с ссылкой на страницу деталей -->
+                    <a href="{% url 'ticket_detail' ticket.id %}">
+                        <button class="btn ticket__solve-btn">Решить</button>
+                    </a>
                     {% else %}
-                    <button class="btn ticket__delete-btn">Удалить</button>
+                    <!-- Кнопка "Удалить" с ссылкой на страницу деталей -->
+                    <a href="{% url 'ticket_detail' ticket.id %}">
+                        <button class="btn ticket__delete-btn">Удалить</button>
+                    </a>
                     {% endif %}
                 </div>
             </div>
             {% endfor %}
+            {% else %}
+            <p class="muted-page-msg">Заявок нет.</p>
+            {% endif %}
         </div>
     </section>
 </div>
