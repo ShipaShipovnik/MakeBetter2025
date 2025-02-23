@@ -67,11 +67,11 @@ def delete_category(request):
         return redirect('profile')
 
 
-def is_staff(user):
-    return user.is_staff
-
-
-@user_passes_test(is_staff)
+# def is_staff(user):
+#     return user.is_staff
+#
+#
+# @user_passes_test(is_staff)
 def ticket_detail(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
     attachment_form = TicketAttachmentForm(request.POST or None, request.FILES or None)
@@ -116,10 +116,13 @@ def ticket_detail(request, ticket_id):
     before_images = ticket.attachments.filter(type='BEFORE')
     after_images = ticket.attachments.filter(type='AFTER')
 
+    comments = ticket.comments.all().order_by('-created_at')
+
     return render(request, 'ticket-detail.html', {
         'ticket': ticket,
         'solve_form': attachment_form,
         'decline_form': comment_form,
         'before_images': before_images,
         'after_images': after_images,
+        'comments': comments,
     })

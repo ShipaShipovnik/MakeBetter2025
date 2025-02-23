@@ -1,5 +1,9 @@
+import os
+
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 from users.models import User
 from django.utils import timezone
 
@@ -56,6 +60,21 @@ class Ticket(models.Model):
 
         super().save(*args, **kwargs)
 
+    def delete(self, *args, **kwargs):
+        # Удаляем все связанные файлы
+        for attachment in self.attachments.all():
+            if attachment.photo:
+                file_path = attachment.photo.path
+                if os.path.isfile(file_path):
+                    try:
+                        os.remove(file_path)
+                    except Exception as e:
+                        print(f"Ошибка при удалении файла {file_path}: {e}")
+        # Удаляем все записи TicketAttachment
+        self.attachments.all().delete()
+        # Вызываем стандартный метод delete
+        super().delete(*args, **kwargs)
+
 
 class TicketAttachment(models.Model):
     TYPE_CHOICES = [
@@ -66,7 +85,6 @@ class TicketAttachment(models.Model):
     ticket = models.ForeignKey(Ticket, related_name='attachments', on_delete=models.CASCADE)
     photo = models.ImageField(upload_to='tickets/attachments/', verbose_name='Фото')
     type = models.CharField(max_length=6, choices=TYPE_CHOICES, verbose_name='Тип фото', default='BEFORE')
-
 
     def __str__(self):
         return f"{self.get_type_display()} для заявки #{self.ticket.title}"

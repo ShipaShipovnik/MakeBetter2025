@@ -49,9 +49,12 @@ def logout_view(request):
 @login_required
 def profile_view(request):
     user = request.user
-    tickets = Ticket.objects.filter(created_by=user)
-    categories = Category.objects.all()
+    if user.is_staff:
+        tickets = Ticket.objects.all()
+    else:
+        tickets = Ticket.objects.filter(created_by=user)
 
+    categories = Category.objects.all()
     catg_form = CategoryForm(request.POST)
 
     context = {
