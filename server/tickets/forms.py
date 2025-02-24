@@ -31,9 +31,16 @@ class TicketAttachmentForm(forms.ModelForm):
             }),
         }
 
-class TicketCommentForm(forms.Form):
-    comment = forms.CharField(widget=forms.Textarea, label='Комментарий', required=True)
 
+class TicketCommentForm(forms.Form):
+    comment = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Причина отклонения, комментарий.',
+            'class': 'form-control descrpt',
+        }),
+        label='Комментарий',
+        required=True,
+    )
 
 
 class CategoryForm(forms.ModelForm):

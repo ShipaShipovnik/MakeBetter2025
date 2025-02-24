@@ -86,7 +86,6 @@ button {
   font-weight: 700;
 }
 
-
 // ОСНОВНАЯ СЕТКА===============================================================
 .header {
   background-color: #c5d86d;
@@ -230,46 +229,39 @@ button {
   font-size: 12px;
   text-align: center;
   margin-top: 10px;
-  a {
-    color: white;
-    // text-decoration: none;
-    color: $salat;
-  }
+  color: rgb(255, 255, 255);
 }
 
-.reg-page {
-  .auth-window{
-    background-color: #0d1321;
-    color: white;
-    padding: 26px 24px;
-    width: 300px;
-    margin: 30px auto;
-    h1 {
-      font-size: 16pt;
-      text-transform: uppercase;
-      text-align: center;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    .form-control {
-      border: none;
-      width: 100%;
-      min-height: 30px;
-      margin-top: 14px;
-      text-align: center;
-    }
-    .agreement-input {
-      display: flex;
-      gap: 10px;
-      margin-top: 14px;
+.auth-window {
+  background-color: #0d1321;
+  color: white;
+  padding: 26px 24px;
+  width: 300px;
+  margin: 30px auto;
+  h1 {
+    font-size: 16pt;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-control {
+    border: none;
+    width: 100%;
+    min-height: 30px;
+    margin-top: 14px;
+    text-align: center;
+  }
+  .agreement-input {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
 
-      label {
-        font-size: 8pt;
-      }
+    label {
+      font-size: 8pt;
     }
-    
   }
 }
 
@@ -389,21 +381,31 @@ button {
   .ticket-control {
     align-self: center;
     padding-right: 20px;
-    .ticket__delete-btn {
-      background-color: $red;
+    .ticket__manage-btn {
+      background-color: $black-blue;
+      text-align: center;
+      color: white;
       padding: 10px;
       width: 100%;
       font-weight: 600;
-      color: #000000;
       margin-bottom: 10px;
     }
-    .ticket__solve-btn {
-      background-color: $salat;
-      padding: 10px;
-      width: 100%;
-      font-weight: 600;
-      color: #000000;
-    }
+
+    // .ticket__delete-btn {
+    //   background-color: $red;
+    //   padding: 10px;
+    //   width: 100%;
+    //   font-weight: 600;
+    //   color: #000000;
+    //   margin-bottom: 10px;
+    // }
+    // .ticket__solve-btn {
+    //   background-color: $salat;
+    //   padding: 10px;
+    //   width: 100%;
+    //   font-weight: 600;
+    //   color: #000000;
+    // }
   }
 }
 

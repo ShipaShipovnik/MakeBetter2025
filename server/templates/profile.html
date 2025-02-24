@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block title %}
 Личный кабинет {{user.name}}
 {% endblock %}
@@ -9,8 +8,10 @@
     <!-- Контент профиля -->
     <section class="profile-header">
         <div class="profile-info">
-            <p>{{ user.name }}</p>  <!-- Имя пользователя -->
-            <p>{{ user.email }}</p>  <!-- Почта пользователя -->
+            <p>{{ user.name }}</p>
+            <!-- Имя пользователя -->
+            <p>{{ user.email }}</p>
+            <!-- Почта пользователя -->
         </div>
         <hr/>
     </section>
@@ -21,21 +22,32 @@
         <h3 class="h3">Управление категориями:</h3>
         <div class="form-window">
             <!-- Форма добавления категории -->
-            <form action="{% url 'create-catg' %}" method="post" class="catg-form catg-add-form">
-                {% csrf_token %}
-                {{ catg_form.name }}
-                <button type="submit" class="btn catg-form__submit">Добавить категорию</button>
+            <form
+                    action="{% url 'create-catg' %}"
+                    method="post"
+                    class="catg-form catg-add-form"
+            >
+                {% csrf_token %} {{ catg_form.name }}
+                <button type="submit" class="btn catg-form__submit">
+                    Добавить категорию
+                </button>
             </form>
 
             <!--удаление-->
-            <form action="{% url 'delete-catg' %}" method="post" class="catg-form catg-delete-form">
+            <form
+                    action="{% url 'delete-catg' %}"
+                    method="post"
+                    class="catg-form catg-delete-form"
+            >
                 {% csrf_token %}
                 <select name="category_id">
                     {% for category in categories %}
                     <option value="{{ category.id }}">{{ category.name }}</option>
                     {% endfor %}
                 </select>
-                <button type="submit" class="btn catg-form__submit">Удалить категорию</button>
+                <button type="submit" class="btn catg-form__submit">
+                    Удалить категорию
+                </button>
             </form>
         </div>
     </section>
@@ -44,7 +56,11 @@
     <!-- Секция заявок -->
     <section class="tickets-sect">
         <div class="ticket-table-header">
+            {% if user.is_staff %}
+            <p>Все заявки. Количество заявок: {{ tickets.count }}</p>
+            {% else %}
             <p>Количество ваших заявок: {{ tickets.count }}</p>
+            {% endif %}
         </div>
 
         <div class="tickets-list">
@@ -52,7 +68,6 @@
             {% for ticket in tickets %}
             <div class="ticket-card {% if ticket.status == 'NEW' %}new-ticket{% elif ticket.status == 'DECLINED' %}declined-ticket{% elif ticket.status == 'SOLVED' %}solved-ticket{% endif %}">
                 <div class="ticket-img">
-                    <!-- Отображаем фото "ДО" для всех заявок -->
                     {% for attachment in ticket.attachments.all %}
                     {% if attachment.type == 'BEFORE' %}
                     <img src="{{ attachment.photo.url }}" class="img" alt="фото до"/>
@@ -79,18 +94,9 @@
                 </div>
                 <div class="ticket-control">
                     {% if ticket.status == 'NEW' %}
-                    <!-- Кнопка "Отклонить" с ссылкой на страницу деталей -->
                     <a href="{% url 'ticket_detail' ticket.id %}">
-                        <button class="btn ticket__delete-btn">Отклонить</button>
-                    </a>
-                    <!-- Кнопка "Решить" с ссылкой на страницу деталей -->
-                    <a href="{% url 'ticket_detail' ticket.id %}">
-                        <button class="btn ticket__solve-btn">Решить</button>
-                    </a>
-                    {% else %}
-                    <!-- Кнопка "Удалить" с ссылкой на страницу деталей -->
-                    <a href="{% url 'ticket_detail' ticket.id %}">
-                        <button class="btn ticket__delete-btn">Удалить</button>
+                        <button class="btn ticket__manage-btn"> Изменить статус</button>
+
                     </a>
                     {% endif %}
                 </div>

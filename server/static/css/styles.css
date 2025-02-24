@@ -201,41 +201,38 @@ button {
   font-size: 12px;
   text-align: center;
   margin-top: 10px;
-}
-.auth-form-text a {
-  color: white;
-  color: #c5d86d;
+  color: rgb(255, 255, 255);
 }
 
-.reg-page .auth-window {
+.auth-window {
   background-color: #0d1321;
   color: white;
   padding: 26px 24px;
   width: 300px;
   margin: 30px auto;
 }
-.reg-page .auth-window h1 {
+.auth-window h1 {
   font-size: 16pt;
   text-transform: uppercase;
   text-align: center;
 }
-.reg-page .auth-window form {
+.auth-window form {
   display: flex;
   flex-direction: column;
 }
-.reg-page .auth-window .form-control {
+.auth-window .form-control {
   border: none;
   width: 100%;
   min-height: 30px;
   margin-top: 14px;
   text-align: center;
 }
-.reg-page .auth-window .agreement-input {
+.auth-window .agreement-input {
   display: flex;
   gap: 10px;
   margin-top: 14px;
 }
-.reg-page .auth-window .agreement-input label {
+.auth-window .agreement-input label {
   font-size: 8pt;
 }
 
@@ -333,20 +330,14 @@ button {
   align-self: center;
   padding-right: 20px;
 }
-.ticket-card .ticket-control .ticket__delete-btn {
-  background-color: #d85151;
+.ticket-card .ticket-control .ticket__manage-btn {
+  background-color: #0d1321;
+  text-align: center;
+  color: white;
   padding: 10px;
   width: 100%;
   font-weight: 600;
-  color: #000000;
   margin-bottom: 10px;
-}
-.ticket-card .ticket-control .ticket__solve-btn {
-  background-color: #c5d86d;
-  padding: 10px;
-  width: 100%;
-  font-weight: 600;
-  color: #000000;
 }
 
 .declined-ticket {

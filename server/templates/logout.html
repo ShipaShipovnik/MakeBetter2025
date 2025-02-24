@@ -6,13 +6,13 @@
 
 {% block content %}
 <div class="container reg-page">
-    <div class="form-window">
+    <div class="form-window auth-window">
         <form action="{% url 'logout' %}" method="post" class="register-form">
             {% csrf_token %}  <!-- Обязательно добавьте CSRF-токен -->
             <h1>Выход</h1>
             <p>Вы уверены, что хотите выйти?</p>
-            <button type="submit" class="btn">Да, я хочу выйти.</button>
-            <a href="{% url 'home' %}" class="btn">Нет, я останусь.</a>
+            <button type="submit" class="btn form-btn">Да, я хочу выйти.</button>
+            <a href="{% url 'home' %}" class="auth-form-text">Нет, я останусь.</a>
         </form>
     </div>
 </div>

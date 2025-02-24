@@ -9,7 +9,11 @@ from .models import Category, Ticket, TicketComment
 
 
 def home(request):
-    return render(request, 'main-page.html')
+    tickets = Ticket.objects.filter(status='SOLVED').order_by('-solved_at')[:4]
+    context = {
+        'tickets': tickets
+    }
+    return render(request, 'main-page.html',context)
 
 
 @login_required

@@ -18,66 +18,42 @@
         <h4 class="h4">Недавно решеные проблемы:</h4>
 
         <div class="solved-problems-list">
+
+            {% if tickets %}
+            {% for ticket in tickets %}
             <!-- карточка -->
             <div class="problem-card">
                 <div class="card-img">
-                    <img src="./media/ticket1.jpg" class="img-before" alt="до"/>
-                    <img src="./media/ticket1-solved.jpg" class="img-after" alt="после"/>
+                    <!-- Отображаем фото "ДО" для всех заявок -->
+                    {% for attachment in ticket.attachments.all %}
+                    {% if attachment.type == 'BEFORE' %}
+                    <img src="{{ attachment.photo.url }}" class="img" alt="фото до"/>
+                    {% endif %}
+                    {% endfor %}
+
+                    <!-- Отображаем фото "После" только для заявок со статусом "Решена" -->
+                    {% if ticket.status == 'SOLVED' %}
+                    {% for attachment in ticket.attachments.all %}
+                    {% if attachment.type == 'AFTER' %}
+                    <img src="{{ attachment.photo.url }}" class="img-after" alt="фото после"/>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">Дыра на дороге рядом со Школой 1</h5>
-                    <h5 class="card-catg">Категория: Дорожные работы</h5>
+                    <h5 class="card-title">{{ ticket.title }}</h5>
+                    <h5 class="card-catg">{{ ticket.category.name }}</h5>
                     <p class="card-text">
-                        Дыра в дороге на улице рядом со школой. Опасно для детей.
+                        {{ ticket.description }}
                     </p>
                 </div>
             </div>
+            {% endfor %}
+            {% else %}
+            <p class="muted-page-msg">Заявок нет.</p>
+            {% endif %}
 
-            <div class="problem-card">
-                <div class="card-img">
-                    <img src="./media/ticket1.jpg" class="img-before" alt="до"/>
-                    <img src="./media/ticket1-solved.jpg" class="img-after" alt="после"/>
-                </div>
-
-                <div class="card-body">
-                    <h5 class="card-title">Дыра на дороге рядом со Школой 1</h5>
-                    <h5 class="card-catg">Категория: Дорожные работы</h5>
-                    <p class="card-text">
-                        Дыра в дороге на улице рядом со школой. Опасно для детей.
-                    </p>
-                </div>
-            </div>
-
-            <div class="problem-card">
-                <div class="card-img">
-                    <img src="./media/ticket1.jpg" class="img-before" alt="до"/>
-                    <img src="./media/ticket1-solved.jpg" class="img-after" alt="после"/>
-                </div>
-
-                <div class="card-body">
-                    <h5 class="card-title">Дыра на дороге рядом со Школой 1</h5>
-                    <h5 class="card-catg">Категория: Дорожные работы</h5>
-                    <p class="card-text">
-                        Дыра в дороге на улице рядом со школой. Опасно для детей.
-                    </p>
-                </div>
-            </div>
-
-            <div class="problem-card">
-                <div class="card-img">
-                    <img src="./media/ticket1.jpg" class="img-before" alt="до"/>
-                    <img src="./media/ticket1-solved.jpg" class="img-after" alt="после"/>
-                </div>
-
-                <div class="card-body">
-                    <h5 class="card-title">Дыра на дороге рядом со Школой 1</h5>
-                    <h5 class="card-catg">Категория: Дорожные работы</h5>
-                    <p class="card-text">
-                        Дыра в дороге на улице рядом со школой. Опасно для детей.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 </div>

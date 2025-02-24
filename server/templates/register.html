@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="container reg-page">
-    <div class="form-window">
+    <div class="form-window auth-window">
         <form action="{% url 'register' %}" method="post" class="register-form">
             {% csrf_token %}  <!-- Обязательно добавьте CSRF-токен -->
             <h1>Регистрация</h1>
