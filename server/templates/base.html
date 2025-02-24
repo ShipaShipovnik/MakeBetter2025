@@ -18,13 +18,14 @@
             <div class="header-center">
                 <a href=" {% url 'create-ticket'  %}" class="btn create-ticket-btn">Отправить заявение</a>
             </div>
-            {% if user.is_authenticated %}
-            <div class="header-right"><a href="{% url 'profile' %}">Личный кабинет</a> - <a href="{% url 'logout' %}">Выйти</a>
+            <div class="header-right">
+                {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}">Личный кабинет</a>
+                <a href="{% url 'logout' %}">Выйти</a>
+                {% else %}
+                <a href="{% url 'register' %}">Вход\Регистрация</a>
+                {% endif %}
             </div>
-
-            {% else %}
-            <div class="header-right"><a href="{% url 'register' %}">Вход\Регистрация</a></div>
-            {% endif %}
         </div>
     </div>
     <div class="main">

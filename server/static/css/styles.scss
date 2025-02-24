@@ -1,15 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 
+// Переменные
 $pale: #ffeddf;
 $salat: #c5d86d;
 $red: #d85151;
 $black-blue: #0d1321;
 
+// Базовые стили
 * {
   font-family: "Manrope", serif;
-}
-
-* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,17 +20,25 @@ body {
 
 // Контейнеры
 .wrapper {
-  //   padding: 12px 0 0 0;
+  // padding: 12px 0 0 0;
   height: 100vh;
   display: grid;
   grid-template-rows: 60px auto 45px;
   width: 1000px;
   margin: 0 auto;
+
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 }
 
 .container {
   width: 800px;
   margin: 0 auto;
+
+  @media (max-width: 720px) {
+    width: 560px;
+  }
 }
 
 section {
@@ -43,6 +50,14 @@ section {
 button {
   border: none;
   cursor: pointer;
+}
+
+// Фото
+.cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 // Заголовки
@@ -90,6 +105,7 @@ button {
 .header {
   background-color: #c5d86d;
   border-radius: 0 0 50px 50px;
+
   .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -97,9 +113,15 @@ button {
     align-items: center;
     height: 100%;
     gap: 0px 0px;
+
+    @media (max-width: 720px) {
+      padding: 0 10px;
+    }
+
     .header-center {
       justify-self: center;
       grid-area: 1 / 2 / 2 / 3;
+
       .create-ticket-btn {
         background-color: white;
         padding: 10px 20px;
@@ -109,42 +131,78 @@ button {
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.2s ease;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+        @media (max-width: 720px) {
+          padding: 8px 16px;
+          font-size: 14px;
+        }
       }
       .create-ticket-btn:hover {
         background-color: #f0f0f0;
         transform: translateY(-2px);
       }
     }
-    .logo img {
-      max-height: 40px;
-      width: auto;
+
+    .logo {
+      img {
+        max-height: 45px;
+        width: auto;
+      }
+      @media (max-width: 720px) {
+        img {
+          max-height: 35px;
+        }
+      }
     }
 
     .header-right {
       justify-self: end;
       grid-area: 1 / 3 / 2 / 4;
-    }
 
-    .header-right a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 20px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+      @media (max-width: 720px) {
+        display: flex;
+        gap: 8px;
+      }
 
-    .header-right a:hover {
-      background-color: rgba(255, 255, 255, 0.2); /* Легкий фон при наведении */
-      color: #000; /* Изменение цвета текста */
+      a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        @media (max-width: 720px) {
+          padding: 6px 12px;
+          font-size: 14px;
+        }
+      }
+
+      a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #000;
+
+        @media (max-width: 720px) {
+          background-color: rgba(255, 255, 255, 0.9);
+        }
+      }
     }
   }
 }
 
 .main {
   background-color: white;
+  background-image: url(../images/bg-vector.png);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+
   margin: 0 45px;
-  padding: 10px 0;
+  padding: 20px 0;
+
+  @media (max-width: 720px) {
+    margin: 0 45px;
+  }
 }
 
 .footer {
@@ -154,9 +212,28 @@ button {
   color: rgb(0, 0, 0, 50%);
   padding-top: 10px;
   font-size: 12px;
+
+  @media (max-width: 720px) {
+    font-size: 10px; // Уменьшаем размер шрифта
+    padding-top: 5px; // Уменьшаем отступы
+  }
 }
 
 // Главная страница ===============================================================
+
+.info-block {
+  display: flex;
+  align-items: center;
+  .info__text {
+    width: 50%;
+  }
+  .info__img {
+    width: 50%;
+    img {
+      width: 100%;
+    }
+  }
+}
 
 .recent-problems {
   margin-top: 15px;
@@ -165,14 +242,22 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
     .problem-card {
       width: 170px;
+      height: 300px;
+      background-color: white;
       border-radius: 10px;
       overflow: hidden;
       margin-bottom: 15px;
       -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
       -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
       box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+
+      @media (max-width: 720px) {
+        width: 267px;
+        height: 410px;
+      }
 
       .card-img {
         width: 100%;
@@ -181,8 +266,15 @@ button {
         overflow: hidden;
         position: relative;
 
+        @media (max-width: 720px) {
+          height: 267px;
+        }
+
         img {
+          width: 100%;
           height: 100%;
+          object-fit: cover;
+          object-position: center;
           position: absolute;
           transition: opacity 0.5s ease-in-out;
         }
@@ -217,6 +309,20 @@ button {
         }
         .card-text {
           font-size: 12px;
+        }
+
+        @media (max-width: 720px) {
+          padding: 12px;
+          .card-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+          }
+          .card-catg {
+            font-size: 14px;
+          }
+          .card-text {
+            font-size: 14px;
+          }
         }
       }
     }
@@ -296,6 +402,10 @@ button {
       margin: 0 auto;
       width: 530px;
 
+      @media (max-width: 720px) {
+        width: 100%;
+      }
+
       .catg-form {
         margin-bottom: 15px;
         height: 30px;
@@ -311,6 +421,7 @@ button {
           height: 100%;
           flex-grow: 1;
           border: none;
+          padding-left: 5px;
         }
       }
 
@@ -337,6 +448,7 @@ button {
   margin-bottom: 15px;
   display: grid;
   grid-template-columns: 120px 1fr 120px;
+  background-color: white;
 
   -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
@@ -463,6 +575,10 @@ button {
     background-color: $black-blue;
     margin: 0 auto;
 
+    @media (max-width: 720px) {
+      width: 100%;
+    }
+
     .create-ticket-form {
       padding: 15px;
       color: white;
@@ -564,3 +680,59 @@ button {
     }
   }
 }
+
+// @media (max-width: 721px) {
+//   body{
+//     background-color: #b6b6b6;
+//   }
+//   // Контейнеры
+//   .wrapper {
+//     grid-template-rows: 60px auto 45px;
+//     width: 720px;
+//   }
+
+//   .container {
+//     width: 570px;
+//     margin: 0 auto;
+//   }
+
+//   // ОСНОВНАЯ СЕТКА===============================================================
+//   .header {
+//     .container {
+//       display: grid;
+//       grid-template-columns: repeat(3, 1fr);
+//       grid-template-rows: 1fr;
+//       align-items: center;
+//       height: 100%;
+//       gap: 0px 0px;
+//       .logo img {
+//         max-height: 45px;
+//         width: auto;
+//       }
+
+//       .header-right {
+//         justify-self: end;
+//         grid-area: 1 / 3 / 2 / 4;
+//       }
+
+//       .header-right a {
+//         text-decoration: none;
+//         color: #333;
+//         font-weight: 600;
+//         padding: 8px 16px;
+//         border-radius: 20px;
+//         transition: background-color 0.3s ease, color 0.3s ease;
+//       }
+
+//       .header-right a:hover {
+//         background-color: rgba(
+//           255,
+//           255,
+//           255,
+//           0.2
+//         ); /* Легкий фон при наведении */
+//         color: #000; /* Изменение цвета текста */
+//       }
+//     }
+//   }
+// }

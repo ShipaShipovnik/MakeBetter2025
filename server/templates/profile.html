@@ -70,7 +70,7 @@
                 <div class="ticket-img">
                     {% for attachment in ticket.attachments.all %}
                     {% if attachment.type == 'BEFORE' %}
-                    <img src="{{ attachment.photo.url }}" class="img" alt="фото до"/>
+                    <img src="{{ attachment.photo.url }}" class="img cover-img " alt="фото до"/>
                     {% endif %}
                     {% endfor %}
 
@@ -78,7 +78,7 @@
                     {% if ticket.status == 'SOLVED' %}
                     {% for attachment in ticket.attachments.all %}
                     {% if attachment.type == 'AFTER' %}
-                    <img src="{{ attachment.photo.url }}" class="img-after" alt="фото после"/>
+                    <img src="{{ attachment.photo.url }}" class="img-after cover-img " alt="фото после"/>
                     {% endif %}
                     {% endfor %}
                     {% endif %}
@@ -92,14 +92,13 @@
                     <p class="ticket__descr">{{ ticket.description }}</p>
                     <p class="ticket__status">Статус: {{ ticket.get_status_display }}</p>
                 </div>
+                {% if ticket.status == 'NEW' and user.is_staff %}
                 <div class="ticket-control">
-                    {% if ticket.status == 'NEW' %}
                     <a href="{% url 'ticket_detail' ticket.id %}">
                         <button class="btn ticket__manage-btn"> Изменить статус</button>
-
                     </a>
-                    {% endif %}
                 </div>
+                {% endif %}
             </div>
             {% endfor %}
             {% else %}

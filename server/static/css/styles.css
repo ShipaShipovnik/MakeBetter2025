@@ -1,10 +1,6 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 * {
   font-family: "Manrope", serif;
-}
-
-* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,10 +17,20 @@ body {
   width: 1000px;
   margin: 0 auto;
 }
+@media (max-width: 720px) {
+  .wrapper {
+    width: 100%;
+  }
+}
 
 .container {
   width: 800px;
   margin: 0 auto;
+}
+@media (max-width: 720px) {
+  .container {
+    width: 560px;
+  }
 }
 
 section {
@@ -35,6 +41,15 @@ section {
 button {
   border: none;
   cursor: pointer;
+}
+
+.cover-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .h3 {
@@ -88,6 +103,11 @@ button {
   height: 100%;
   gap: 0px 0px;
 }
+@media (max-width: 720px) {
+  .header .container {
+    padding: 0 10px;
+  }
+}
 .header .container .header-center {
   justify-self: center;
   grid-area: 1/2/2/3;
@@ -102,17 +122,34 @@ button {
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
+@media (max-width: 720px) {
+  .header .container .header-center .create-ticket-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
 .header .container .header-center .create-ticket-btn:hover {
   background-color: #f0f0f0;
   transform: translateY(-2px);
 }
 .header .container .logo img {
-  max-height: 40px;
+  max-height: 45px;
   width: auto;
+}
+@media (max-width: 720px) {
+  .header .container .logo img {
+    max-height: 35px;
+  }
 }
 .header .container .header-right {
   justify-self: end;
   grid-area: 1/3/2/4;
+}
+@media (max-width: 720px) {
+  .header .container .header-right {
+    display: flex;
+    gap: 8px;
+  }
 }
 .header .container .header-right a {
   text-decoration: none;
@@ -122,15 +159,35 @@ button {
   border-radius: 20px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+@media (max-width: 720px) {
+  .header .container .header-right a {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
 .header .container .header-right a:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Легкий фон при наведении */
-  color: #000; /* Изменение цвета текста */
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #000;
+}
+@media (max-width: 720px) {
+  .header .container .header-right a:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
 }
 
 .main {
   background-color: white;
+  background-image: url(../images/bg-vector.png);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
   margin: 0 45px;
-  padding: 10px 0;
+  padding: 20px 0;
+}
+@media (max-width: 720px) {
+  .main {
+    margin: 0 45px;
+  }
 }
 
 .footer {
@@ -140,6 +197,26 @@ button {
   color: rgba(0, 0, 0, 0.5);
   padding-top: 10px;
   font-size: 12px;
+}
+@media (max-width: 720px) {
+  .footer {
+    font-size: 10px;
+    padding-top: 5px;
+  }
+}
+
+.info-block {
+  display: flex;
+  align-items: center;
+}
+.info-block .info__text {
+  width: 50%;
+}
+.info-block .info__img {
+  width: 50%;
+}
+.info-block .info__img img {
+  width: 100%;
 }
 
 .recent-problems {
@@ -152,10 +229,18 @@ button {
 }
 .recent-problems .solved-problems-list .problem-card {
   width: 170px;
+  height: 300px;
+  background-color: white;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 15px;
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+@media (max-width: 720px) {
+  .recent-problems .solved-problems-list .problem-card {
+    width: 267px;
+    height: 410px;
+  }
 }
 .recent-problems .solved-problems-list .problem-card .card-img {
   width: 100%;
@@ -164,8 +249,18 @@ button {
   overflow: hidden;
   position: relative;
 }
+@media (max-width: 720px) {
+  .recent-problems .solved-problems-list .problem-card .card-img {
+    height: 267px;
+  }
+}
 .recent-problems .solved-problems-list .problem-card .card-img img {
+  width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
   position: absolute;
   transition: opacity 0.5s ease-in-out;
 }
@@ -195,6 +290,21 @@ button {
 }
 .recent-problems .solved-problems-list .problem-card .card-body .card-text {
   font-size: 12px;
+}
+@media (max-width: 720px) {
+  .recent-problems .solved-problems-list .problem-card .card-body {
+    padding: 12px;
+  }
+  .recent-problems .solved-problems-list .problem-card .card-body .card-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .recent-problems .solved-problems-list .problem-card .card-body .card-catg {
+    font-size: 14px;
+  }
+  .recent-problems .solved-problems-list .problem-card .card-body .card-text {
+    font-size: 14px;
+  }
 }
 
 .auth-form-text {
@@ -258,6 +368,11 @@ button {
   margin: 0 auto;
   width: 530px;
 }
+@media (max-width: 720px) {
+  .profile-page .profile-admin-catg .form-window {
+    width: 100%;
+  }
+}
 .profile-page .profile-admin-catg .form-window .catg-form {
   margin-bottom: 15px;
   height: 30px;
@@ -273,6 +388,7 @@ button {
   height: 100%;
   flex-grow: 1;
   border: none;
+  padding-left: 5px;
 }
 .profile-page .profile-admin-catg .form-window .catg-add-form .catg-form__submit {
   background-color: #c5d86d;
@@ -289,6 +405,7 @@ button {
   margin-bottom: 15px;
   display: grid;
   grid-template-columns: 120px 1fr 120px;
+  background-color: white;
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 .ticket-card .ticket-img {
@@ -381,6 +498,11 @@ button {
   width: 660px;
   background-color: #0d1321;
   margin: 0 auto;
+}
+@media (max-width: 720px) {
+  .create-ticket-page .form-window {
+    width: 100%;
+  }
 }
 .create-ticket-page .form-window .create-ticket-form {
   padding: 15px;
