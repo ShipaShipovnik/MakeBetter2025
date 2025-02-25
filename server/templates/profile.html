@@ -63,6 +63,26 @@
             {% endif %}
         </div>
 
+         <div class="ticket-filter-form ticket-table-filters">
+            <form method="get" class="form-inline ticket-table-filters__form">
+
+                <div class="form-group mb-2">
+                    {{ filter.form.status.label_tag }}
+                    {{ filter.form.status }}
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    {{ filter.form.category.label_tag }}
+                    {{ filter.form.category }}
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    {{ filter.form.created_at.label_tag }}
+                    {{ filter.form.created_at }}
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Фильтровать</button>
+            </form>
+         </div>
+
+
         <div class="tickets-list">
             {% if tickets %}
             {% for ticket in tickets %}

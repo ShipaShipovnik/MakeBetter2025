@@ -2,6 +2,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+
+from tickets.filters import TicketFilter
 from .forms import *
 from tickets.models import Category, Ticket
 
@@ -50,17 +52,21 @@ def logout_view(request):
 def profile_view(request):
     user = request.user
     if user.is_staff:
-        tickets = Ticket.objects.all()
+        tickets = Ticket.objects.all().order_by('-created_at')
     else:
         tickets = Ticket.objects.filter(created_by=user)
 
     categories = Category.objects.all()
     catg_form = CategoryForm(request.POST)
 
+    ticket_filter = TicketFilter(request.GET, queryset=tickets)
+    tickets = ticket_filter.qs  # Получаем отфильтрованные тикеты
+
     context = {
         'user': user,
         'tickets': tickets,
         'categories': categories,
         'catg_form': catg_form,
+        'filter': ticket_filter,
     }
     return render(request, 'profile.html', context)
